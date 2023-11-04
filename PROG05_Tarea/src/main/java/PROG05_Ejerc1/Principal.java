@@ -13,8 +13,11 @@ import java.util.Scanner;
 
 
 public class Principal {
+    static Scanner scn = new Scanner(System.in); //Introducimos el objeto Scanner para poder leer la entrada del teclado del usuario
+        
     
     public static void Menu(){
+        
         System.out.println("1. Nuevo Vehiculo");
         System.out.println("2. Ver Matrícula");
         System.out.println("3. Ver Número de Kilómetros");
@@ -27,13 +30,38 @@ public class Principal {
     }
     
     public static void main (String[] args){
-        Scanner scn = new Scanner(System.in); //Introducimos el objeto Scanner para poder leer la entrada del teclado del usuario
         
         //Procedemos a imprimir por pantalla el menú
+        byte opcion = 0;
+        do {
         Menu();
         System.out.println("Escriba el número de la opción deseada");
-        byte opcion = Byte.parseByte(scn.nextLine());
+        opcion = Byte.parseByte(scn.nextLine());
+        Vehiculo nuevoV = new Vehiculo();
         
+            switch (opcion){
+                case 1:{
+                    nuevoV.NuevoVehiculo();
+                    break;
+                }
+                case 2:{
+                    System.out.println(nuevoV.getMatricula());
+                    break;
+                }
+                case 3:{
+                    System.out.println(nuevoV.getKilometros());
+                    break;
+                }
+                case 4:{
+                    nuevoV.ActualizaKms();
+                    break;
+                }
+                case 5:{
+                    
+                }
+            }
+        }
+        while (opcion <10);
         
     }
 }
