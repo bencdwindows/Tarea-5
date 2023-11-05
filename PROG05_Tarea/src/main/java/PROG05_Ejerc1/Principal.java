@@ -14,7 +14,26 @@ import java.util.Scanner;
 
 public class Principal {
     static Scanner scn = new Scanner(System.in); //Introducimos el objeto Scanner para poder leer la entrada del teclado del usuario
-        
+    
+    static Vehiculo nuevoV = new Vehiculo();
+    
+    public static void Configurar(){
+        System.out.println("Marca del vehiculo:");
+        nuevoV.setMarca(scn.nextLine());
+        System.out.println("Introduzca la matricula:");
+        nuevoV.setMatricula(scn.nextLine());
+        System.out.println("Introduzca los kilometros del vehiculo:");
+        nuevoV.setKilometros(Integer.parseInt(scn.nextLine()));
+        System.out.println("Introduzca la fecha de matriculacion (dia/mes/año):");
+        /*fechaMatriculacion = LocalDate.parse(scn.nextLine(), DateTimeFormatter.ofPattern("dd MM yyyy"));*/
+        nuevoV.setFechaMatriculacion(scn.nextLine());
+        System.out.println("Introduzca el precio del vehiculo:");
+        nuevoV.setPrecio(Integer.parseInt(scn.nextLine()));
+        System.out.println("Introduzca el nombre del propietario:");
+        nuevoV.setPropietario(scn.nextLine());
+        System.out.println("Introduzca el DNI del propietario:");
+        nuevoV.setDniPropietario(scn.nextLine());
+        }
     
     public static void Menu(){
         
@@ -35,13 +54,12 @@ public class Principal {
         byte opcion = 0;
         do {
         Menu();
-        System.out.println("Escriba el número de la opción deseada");
+        System.out.println("\nEscriba el número de la opción deseada\n");
         opcion = Byte.parseByte(scn.nextLine());
-        Vehiculo nuevoV = new Vehiculo();
         
             switch (opcion){
                 case 1:{
-                    nuevoV.NuevoVehiculo();
+                    Configurar();
                     break;
                 }
                 case 2:{
@@ -57,7 +75,23 @@ public class Principal {
                     break;
                 }
                 case 5:{
-                    
+                    System.out.println("El vehículo tiene " + nuevoV.get_Anios() + " años");
+                    break;
+                }
+                case 6:{
+                    System.out.println("Propietario:\n" + nuevoV.getPropietario());
+                    break;
+                }
+                case 7:{
+                    System.out.println(nuevoV.toString());
+                    break;
+                }
+                case 8:{
+                    System.out.println("El vehiculo tiene un valor de: " + nuevoV.getPrecio());
+                    break;
+                }
+                case 9:{
+                    opcion = 10;
                 }
             }
         }
